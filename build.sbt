@@ -1,0 +1,1 @@
+seq(javadoc.JavadocPlugin.javadocSettings: _*)

@@ -1,0 +1,95 @@
+@(materials: List[cn.edu.sdu.erp.system.mps.models.Material])
+
+<html>
+    <head>
+    </head>
+    <body>
+        请选择物料：
+        <select id="material">
+            @for(material <- materials ) {
+                <option value ="material.gerId">material.gerName</option>
+            }
+        </select>
+        <table id="mps">
+            <tr>
+                <th>时区</th>
+                <td>当期</td>
+                <td>需求时区</td>
+                <td>计划时区</td>
+                <td>预测时区</td>
+            </tr>
+            <tr>
+                <th>时段（周）</th>
+                <td>当期</td>
+                <td>1</td><td>2</td><td>3</td>
+                <td>4</td><td>5</td><td>6</td>
+                <td>7</td><td>8</td><td>9</td>
+                <td>10</td><td>11</td><td>12</td>
+            </tr>
+            <tr>
+                <th>预测量</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+            <tr>
+                <th>合同量</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+            <tr>
+                <th>毛需求量</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+            <tr>
+                <th>PAB初值</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+            <tr>
+                <th>计划接收量</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+            <tr>
+                <th>净需求量</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+            <tr>
+                <th>计划产出量</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+            <tr>
+                <th>可供销售量(ATP)</th>
+                <td></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><imput /></td><td><imput /></td><td><imput /></td>
+            </tr>
+        </table>
+    </body>
+</html>

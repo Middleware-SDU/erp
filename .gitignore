@@ -1,12 +1,37 @@
-*.class
+logs
+project/project/target
+project/target
+target
+tmp
+.history
+dist
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+/bin
 
-# Package Files #
-*.jar
-*.war
-*.ear
+/data-dev
+/upload
+/data-test
+/data
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+.idea
+*.iml
+out
+.idea_modules
+.classpath
+.project
+RUNNING_PID
+
+# ignore eclipse related resources
+.settings
+.target
+
+# ignore Mac OS .DS_Store file
+.DS_Store
+
+
+# ignore upload folder
+/upload
+
+# ignore .cache for Scala-IDE
+.cache
+
