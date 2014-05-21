@@ -1,22 +1,39 @@
-@(materials: List[cn.edu.sdu.erp.system.mps.models.Material])
+@(orders: List[cn.edu.sdu.erp.system.mps.models._Order])
 
 <html>
     <head>
+        <style type="text/css">
+            table{width:100%;text-align:center;}
+            table td{width: 70px;}
+            table td input{width: 70px;}
+            .process{
+                width: 100%;
+                height: auto;
+                border: 2px solid black;
+                padding: 10px;
+                text-align: left;
+                font-size: 20;
+            }
+        </style>
     </head>
-    <body>
+    <body align="center">
+        <br><br>
         请选择物料：
-        <select id="material">
-            @for(material <- materials ) {
-                <option value ="material.gerId">material.gerName</option>
+        <select id="material" style="width: 302px;height: 22px;">
+            @for(_order <- orders ) {
+                <option value ="@_order.getMaterial.getId">@_order.getMaterial.getName</option>
             }
         </select>
-        <table id="mps">
+        <br><br>
+        <hr>
+        <br><br>
+        <table id="mps" border="2">
             <tr>
                 <th>时区</th>
-                <td>当期</td>
-                <td>需求时区</td>
-                <td>计划时区</td>
-                <td>预测时区</td>
+                <td></td>
+                <td colspan="3">需求时区</td>
+                <td colspan="5">计划时区</td>
+                <td colspan="4">预测时区</td>
             </tr>
             <tr>
                 <th>时段（周）</th>
@@ -29,67 +46,72 @@
             <tr>
                 <th>预测量</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><input name="one" /></td><td><input /></td><td><input /></td>
+                <td><input /></td><td><input /></td><td><input /></td>
+                <td><input /></td><td><input /></td><td><input /></td>
+                <td><input /></td><td><input /></td><td><input /></td>
             </tr>
             <tr>
                 <th>合同量</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
             </tr>
             <tr>
                 <th>毛需求量</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
             </tr>
             <tr>
                 <th>PAB初值</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
             </tr>
             <tr>
                 <th>计划接收量</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td><input /></td><td><input /></td><td><input /></td>
+                <td><input /></td><td><input /></td><td><input /></td>
+                <td><input /></td><td><input /></td><td><input /></td>
+                <td><input /></td><td><input /></td><td><input /></td>
             </tr>
             <tr>
                 <th>净需求量</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
             </tr>
             <tr>
                 <th>计划产出量</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
             </tr>
             <tr>
                 <th>可供销售量(ATP)</th>
                 <td></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
-                <td><imput /></td><td><imput /></td><td><imput /></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
+                <td></td><td></td><td></td>
             </tr>
         </table>
+        <br><br>
+        <div style="color:green;">[ PROCESS CONSOLE ]</div>
+        <br>
+        <div id="process" class="process">
+        </div>
     </body>
 </html>

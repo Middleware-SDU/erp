@@ -2,8 +2,6 @@ package cn.edu.sdu.erp.system.mps.models;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import javax.persistence.PersistenceUnit;
-
 import cn.edu.sdu.erp.system.commons.models.BaseModel;
 
 /**
@@ -12,7 +10,6 @@ import cn.edu.sdu.erp.system.commons.models.BaseModel;
  *
  */
 @Entity
-@PersistenceUnit(name="mpsUnit")
 public class MpsRow extends BaseModel {
 
     private static final long serialVersionUID = -7398180798157455614L;

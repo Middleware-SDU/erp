@@ -2,6 +2,8 @@ package cn.edu.sdu.erp.system.commons.models;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * 
  * @author sdcsyyg
@@ -11,6 +13,14 @@ import java.io.Serializable;
 public class MpsRecord implements Serializable {
 
     private static final long serialVersionUID = -8200962077583924901L;
+
+    public static void main(String args[]) {
+        MpsRecord m = new MpsRecord();
+        String s = JSON.toJSONString(m);
+        System.out.println(s);
+        MpsRecord tm = JSON.parseObject("{eight:80,eleven:80,five:80,four:80,nine:80,one:0,seven:80,six:80,ten:80,three:80,twelve:80,two:0}", MpsRecord.class);
+        System.out.println(tm.ten);
+    }
 
     private int one;
     private int two;

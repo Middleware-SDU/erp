@@ -1,6 +1,6 @@
 package cn.edu.sdu.erp.system.mps.models;
 import javax.persistence.Entity;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.ManyToOne;
 
 import cn.edu.sdu.erp.system.commons.models.BaseModel;
 import cn.edu.sdu.erp.system.mps.daos.MaterialDAO;
@@ -12,15 +12,15 @@ import cn.edu.sdu.erp.system.mps.daos.impls.MaterialDAOImpl;
  *
  */
 @Entity
-@PersistenceUnit(name="mpsUnit")
 public class Material extends BaseModel {
 
     private static final long serialVersionUID = -5218995222556754550L;
 
     private String name;
+    @ManyToOne
     private MaterialCategory category;
     private String code;
-    private int earlyDays;
+    private int earlyDays = 1;
     private int stack = 80;
     private int safeStack = 50;
 

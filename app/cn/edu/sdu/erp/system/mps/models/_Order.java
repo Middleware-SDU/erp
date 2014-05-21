@@ -1,15 +1,13 @@
 package cn.edu.sdu.erp.system.mps.models;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.OneToOne;
 
 import cn.edu.sdu.erp.system.commons.models.BaseModel;
+import cn.edu.sdu.erp.system.mps.daos._OrderDAO;
+import cn.edu.sdu.erp.system.mps.daos.impls._OrderDAOImpl;
 
 /**
  * 
@@ -17,7 +15,6 @@ import cn.edu.sdu.erp.system.commons.models.BaseModel;
  *
  */
 @Entity
-@PersistenceUnit(name="mpsUnit")
 public class _Order extends BaseModel {
 
     private static final long serialVersionUID = -2446725619512650221L;
@@ -25,9 +22,11 @@ public class _Order extends BaseModel {
     @ManyToOne
     private Consumer consumer;
     private Date createTime;
+    @OneToOne
+    private Material material;
+    private String bargaint;
 
-    @OneToMany(mappedBy="_order", cascade={CascadeType.PERSIST})
-    private List<_OrderItem> orderItems = new ArrayList<_OrderItem>();
+    public static _OrderDAO dao = new _OrderDAOImpl();
 
     public _Order() {
         this.createTime = new Date();
@@ -41,14 +40,6 @@ public class _Order extends BaseModel {
         this.consumer = consumer;
     }
 
-    public List<_OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<_OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -57,22 +48,20 @@ public class _Order extends BaseModel {
         this.createTime = createTime;
     }
 
-    public void addItem(_OrderItem item) {
-        if(this.orderItems != null && !this.orderItems.contains(item)) {
-            this.orderItems.add(item);
-        }
+    public String getBargaint() {
+        return bargaint;
     }
 
-    public void removeItem(_OrderItem item) {
-        if(this.orderItems != null && this.orderItems.contains(item)) {
-            this.orderItems.remove(item);
-        }
+    public void setBargaint(String bargaint) {
+        this.bargaint = bargaint;
     }
 
-    public void updateItem(_OrderItem item) {
-        if(this.orderItems != null && this.orderItems.contains(item)) {
-            this.orderItems.set(this.orderItems.indexOf(item), item);
-        }
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 
 }

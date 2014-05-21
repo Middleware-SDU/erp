@@ -7,7 +7,6 @@ import cn.edu.sdu.erp.system.commons.models.BaseModel;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
-import play.Play;
 import play.libs.F.Callback0;
 import play.libs.Yaml;
 import play.mvc.Action;
@@ -22,10 +21,8 @@ public class Global extends GlobalSettings {
 
     @Override
     public void onStart(Application app) {
-        final String mpsUnit = Play.application().configuration().getString("jpa.mpsUnit");
-        final String mrpUnit = Play.application().configuration().getString("jpa.mrpUnit");
 
-        JPA.withTransaction(mpsUnit, new Callback0() {
+        JPA.withTransaction(new Callback0() {
             @SuppressWarnings("unchecked")
             public void invoke() {
 
@@ -38,7 +35,7 @@ public class Global extends GlobalSettings {
                             List<Object> list = entry.getValue();
                             if (list != null) {
                                 for (BaseModel model : getModelFromList(list)) {
-                                    JPA.em(mpsUnit).persist(model);
+                                    JPA.em().persist(model);
                                 }
                             }
                         }
@@ -48,28 +45,6 @@ public class Global extends GlobalSettings {
             }
         });
 
-        JPA.withTransaction(mrpUnit, new Callback0() {
-            @SuppressWarnings("unchecked")
-            public void invoke() {
-
-                long count = cn.edu.sdu.erp.system.mrp.models.User.dao.findAll().size();
-
-                if(count == 0){
-                    Map<String, List<Object>> all = (Map<String, List<Object>>) Yaml.load("initial-data-mrp.yml");
-                    if(all != null && all.size()>0) {
-                        for (Map.Entry<String, List<Object>> entry : all.entrySet()) {
-                            List<Object> list = entry.getValue();
-                            if (list != null) {
-                                for (BaseModel model : getModelFromList(list)) {
-                                    JPA.em(mrpUnit).persist(model);
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-        });
     }
 
     @SuppressWarnings("rawtypes")

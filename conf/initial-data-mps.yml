@@ -1,0 +1,66 @@
+# Consumer
+consumers:
+
+    - &user_A !!cn.edu.sdu.erp.system.mps.models.Consumer
+        name:      Yonggang Yuan
+
+    - &user_B !!cn.edu.sdu.erp.system.mps.models.Consumer
+        name:      sdcsyyg
+
+# MaterialCategories
+
+materialCategories:
+
+    - &category_A !!cn.edu.sdu.erp.system.mps.models.MaterialCategory
+        name:       木料类
+
+    - &category_B !!cn.edu.sdu.erp.system.mps.models.MaterialCategory
+        name:       钢材类
+
+# Materials
+
+materials:
+
+    - &material_1 !!cn.edu.sdu.erp.system.mps.models.Material
+        category:       *category_A
+        code:           001
+        name:           001 木质门窗
+
+    - &material_2 !!cn.edu.sdu.erp.system.mps.models.Material
+        category:       *category_A
+        code:           002
+        name:           002 圆木(尺寸：## X ##)
+
+    - &material_3 !!cn.edu.sdu.erp.system.mps.models.Material
+        category:       *category_B
+        code:           011
+        name:           011 钢板（尺寸：## X ##)
+
+    - &material_4 !!cn.edu.sdu.erp.system.mps.models.Material
+        category:       *category_B
+        code:           012
+        name:           012 钢筋（规格：12m）
+
+# _Orders
+
+_orders:
+
+    - &order_1 !!cn.edu.sdu.erp.system.mps.models._Order
+        material:       *material_1
+        consumer:       *user_A
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":0,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":0}"
+
+    - &order_2 !!cn.edu.sdu.erp.system.mps.models._Order
+        material:       *material_2
+        consumer:       *user_B
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":0,\"seven\":76,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":90,\"two\":0}"
+
+    - &order_3 !!cn.edu.sdu.erp.system.mps.models._Order
+        material:       *material_3
+        consumer:       *user_A
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":78,\"seven\":56,\"six\":80,\"ten\":34,\"three\":80,\"twelve\":80,\"two\":0}"
+
+    - &order_4 !!cn.edu.sdu.erp.system.mps.models._Order
+        material:       *material_4
+        consumer:       *user_B
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":0,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":0}"
