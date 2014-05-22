@@ -21,6 +21,7 @@ public class Material extends BaseModel {
     private MaterialCategory category;
     private String code;
     private int earlyDays = 1;
+    private int batch = 100;
     private int stack = 80;
     private int safeStack = 50;
 
@@ -62,6 +63,12 @@ public class Material extends BaseModel {
     }
     public void setSafeStack(int safeStack) {
         this.safeStack = safeStack;
+    }
+    public int getBatch() {
+        return batch;
+    }
+    public void setBatch(int batch) {
+        this.batch = batch;
     }
 
 }

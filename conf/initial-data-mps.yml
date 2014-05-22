@@ -48,19 +48,19 @@ _orders:
     - &order_1 !!cn.edu.sdu.erp.system.mps.models._Order
         material:       *material_1
         consumer:       *user_A
-        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":0,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":0}"
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":90,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":90}"
 
     - &order_2 !!cn.edu.sdu.erp.system.mps.models._Order
         material:       *material_2
         consumer:       *user_B
-        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":0,\"seven\":76,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":90,\"two\":0}"
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":90,\"seven\":76,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":90,\"two\":90}"
 
     - &order_3 !!cn.edu.sdu.erp.system.mps.models._Order
         material:       *material_3
         consumer:       *user_A
-        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":78,\"seven\":56,\"six\":80,\"ten\":34,\"three\":80,\"twelve\":80,\"two\":0}"
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":78,\"seven\":56,\"six\":80,\"ten\":34,\"three\":80,\"twelve\":80,\"two\":90}"
 
     - &order_4 !!cn.edu.sdu.erp.system.mps.models._Order
         material:       *material_4
         consumer:       *user_B
-        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":0,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":0}"
+        bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":90,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":90}"

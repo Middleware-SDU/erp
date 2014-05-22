@@ -9,24 +9,25 @@
             .process{
                 width: 100%;
                 height: auto;
-                border: 2px solid black;
                 padding: 10px;
                 text-align: left;
                 font-size: 20;
             }
         </style>
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/mps.js")" type="text/javascript"></script>
     </head>
     <body align="center">
-        <br><br>
-        请选择物料：
+        <br>
+        请选择合同(含物料信息)：
         <select id="material" style="width: 302px;height: 22px;">
             @for(_order <- orders ) {
-                <option value ="@_order.getMaterial.getId">@_order.getMaterial.getName</option>
+                <option value ="@_order.getId" safeStack="@_order.getMaterial.getSafeStack" batch="@_order.getMaterial.getBatch" stack="@_order.getMaterial.getStack" data="@_order.getBargaint">合同 -- @_order.getMaterial.getName</option>
             }
         </select>
-        <br><br>
+        <br>
         <hr>
-        <br><br>
+        <br>
         <table id="mps" border="2">
             <tr>
                 <th>时区</th>
@@ -46,72 +47,90 @@
             <tr>
                 <th>预测量</th>
                 <td></td>
-                <td><input name="one" /></td><td><input /></td><td><input /></td>
-                <td><input /></td><td><input /></td><td><input /></td>
-                <td><input /></td><td><input /></td><td><input /></td>
-                <td><input /></td><td><input /></td><td><input /></td>
+                <td><input id="y-one" /></td><td><input id="y-two" /></td><td><input id="y-three"/></td>
+                <td><input id="y-four" /></td><td><input id="y-five" /></td><td><input id="y-six" /></td>
+                <td><input id="y-seven" /></td><td><input id="y-eight" /></td><td><input id="y-nine" /></td>
+                <td><input id="y-ten" /></td><td><input id="y-eleven" /></td><td><input id="y-twelve" /></td>
             </tr>
             <tr>
                 <th>合同量</th>
                 <td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
+                <td id="b-one"></td><td id="b-two"></td><td id="b-three"></td>
+                <td id="b-four"></td><td id="b-five"></td><td id="b-six"></td>
+                <td id="b-seven"></td><td id="b-eight"></td><td id="b-nine"></td>
+                <td id="b-ten"></td><td id="b-eleven"></td><td id="b-twelve"></td>
             </tr>
-            <tr>
+            <tr style="background-color: rgb(13, 148, 224);">
                 <th>毛需求量</th>
                 <td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
+                <td id="m-one"></td><td id="m-two"></td><td id="m-three"></td>
+                <td id="m-four"></td><td id="m-five"></td><td id="m-six"></td>
+                <td id="m-seven"></td><td id="m-eight"></td><td id="m-nine"></td>
+                <td id="m-ten"></td><td id="m-eleven"></td><td id="m-twelve"></td>
             </tr>
-            <tr>
+            <tr style="background-color: red;">
                 <th>PAB初值</th>
-                <td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
+                <td id="pab-zero"></td>
+                <td id="pab-one"></td><td id="pab-two"></td><td id="pab-three"></td>
+                <td id="pab-four"></td><td id="pab-five"></td><td id="pab-six"></td>
+                <td id="pab-seven"></td><td id="pab-eight"></td><td id="pab-nine"></td>
+                <td id="pab-ten"></td><td id="pab-eleven"></td><td id="pab-twelve"></td>
+            </tr>
+            <tr style="background-color: rgb(13, 148, 224);">
+                <th>PAB</th>
+                <td id="pab1-zero"></td>
+                <td id="pab1-one"></td><td id="pab1-two"></td><td id="pab1-three"></td>
+                <td id="pab1-four"></td><td id="pab1-five"></td><td id="pab1-six"></td>
+                <td id="pab1-seven"></td><td id="pab1-eight"></td><td id="pab1-nine"></td>
+                <td id="pab1-ten"></td><td id="pab1-eleven"></td><td id="pab1-twelve"></td>
             </tr>
             <tr>
                 <th>计划接收量</th>
                 <td></td>
-                <td><input /></td><td><input /></td><td><input /></td>
-                <td><input /></td><td><input /></td><td><input /></td>
-                <td><input /></td><td><input /></td><td><input /></td>
-                <td><input /></td><td><input /></td><td><input /></td>
+                <td><input id="j-one" /></td><td><input id="j-two" /></td><td><input id="j-three"/></td>
+                <td><input id="j-four" /></td><td><input id="j-five" /></td><td><input id="j-six" /></td>
+                <td><input id="j-seven" /></td><td><input id="j-eight" /></td><td><input id="j-nine" /></td>
+                <td><input id="j-ten" /></td><td><input id="j-eleven" /></td><td><input id="j-twelve" /></td>
             </tr>
-            <tr>
+            <tr style="background-color: rgb(13, 148, 224);">
                 <th>净需求量</th>
                 <td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
+                <td id="x-one"></td><td id="x-two"></td><td id="x-three"></td>
+                <td id="x-four"></td><td id="x-five"></td><td id="x-six"></td>
+                <td id="x-seven"></td><td id="x-eight"></td><td id="x-nine"></td>
+                <td id="x-ten"></td><td id="x-eleven"></td><td id="x-twelve"></td>
             </tr>
-            <tr>
+            <tr style="background-color: red;">
                 <th>计划产出量</th>
                 <td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
+                <td id="c-one"></td><td id="c-two"></td><td id="c-three"></td>
+                <td id="c-four"></td><td id="c-five"></td><td id="c-six"></td>
+                <td id="c-seven"></td><td id="c-eight"></td><td id="c-nine"></td>
+                <td id="c-ten"></td><td id="c-eleven"></td><td id="c-twelve"></td>
             </tr>
-            <tr>
+            <tr style="background-color: rgb(13, 148, 224);">
+                <th>计划投入量</th>
+                <td id="t-zero"></td>
+                <td id="t-one"></td><td id="t-two"></td><td id="t-three"></td>
+                <td id="t-four"></td><td id="t-five"></td><td id="t-six"></td>
+                <td id="t-seven"></td><td id="t-eight"></td><td id="t-nine"></td>
+                <td id="t-ten"></td><td id="t-eleven"></td><td id="t-twelve"></td>
+            </tr>
+            <tr style="background-color: red;">
                 <th>可供销售量(ATP)</th>
                 <td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
-                <td></td><td></td><td></td>
+                <td id="atp-one"></td><td id="atp-two"></td><td id="atp-three"></td>
+                <td id="atp-four"></td><td id="atp-five"></td><td id="atp-six"></td>
+                <td id="atp-seven"></td><td id="atp-eight"></td><td id="atp-nine"></td>
+                <td id="atp-ten"></td><td id="atp-eleven"></td><td id="atp-twelve"></td>
             </tr>
         </table>
-        <br><br>
-        <div style="color:green;">[ PROCESS CONSOLE ]</div>
         <br>
+        <div style="color:green;"><button id="btn-process" style="width: 316px;height: 20px;font-size: 16px;">PROCESS</button></div>
         <div id="process" class="process">
+        <div align="center" style="background-color: green;">[ --  Process Console  -- ]</div>
+        <br>
+        <div id="show-process" style="font-size: 17px;border-left: 2px solid;border-right: 2px solid;border-bottom: 2px solid;padding: 10px;"></div>
         </div>
     </body>
 </html>
