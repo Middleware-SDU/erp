@@ -18,8 +18,270 @@ $(function(){
         var v2 = setPABCX();
         var v3 = setATP();
         $('#show-process').html(v1+v2+v3);
+        persistence();// Persistence to local storage[jStorage]
     });
 });
+
+var persistence = function() {
+    var id = $('#material').find("option:selected").attr("value");
+    var initPAB = getInitPAB();
+    var pab = getPAB();
+    var jieshou = getJieshou();
+    var jxq = getJXQ();
+    var cc = getCC();
+    var tr = getTR();
+
+    $.jStorage.set(id+"-initPAB", initPAB);
+    $.jStorage.set(id+"-pab", pab);
+    $.jStorage.set(id+"-jieshou", jieshou);
+    $.jStorage.set(id+"-jxq", jxq);
+    $.jStorage.set(id+"-cc", cc);
+    $.jStorage.set(id+"-tr", tr);
+}
+
+var setATP = function() {
+    var temp = getJieshou();
+    var bargaint = JSON.parse($('#material').find("option:selected").attr("data"));
+    $('#atp-one').html(Number($('#pab-zero').html()) + Number($('#c-one').html()) + Number(temp.one) - Number(bargaint.one) -(
+        Number($('#c-two').html()) >= 0 ? 0 : (Number(bargaint.two) +
+                Number($('#c-three').html()) >= 0 ? 0 : (Number(bargaint.three) +
+                        Number($('#c-four').html()) >= 0 ? 0 : (Number(bargaint.four) +
+                                Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
+                                        Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
+                                                Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
+                                                        Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
+                                                                Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                                                                        Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                                                                                Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                                                                        Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                                                                                )
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                )
+            )
+        ));
+
+    $('#atp-two').html(Number($('#c-two').html()) + Number(temp.two) - Number(bargaint.two) -(
+        Number($('#c-three').html()) >= 0 ? 0 : (Number(bargaint.three) +
+                Number($('#c-four').html()) >= 0 ? 0 : (Number(bargaint.four) +
+                        Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
+                                Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
+                                        Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
+                                                Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
+                                                        Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                                                                Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                                                                        Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                                                                Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                )
+        )
+    ));
+
+    $('#atp-three').html(Number($('#c-three').html()) + Number(temp.three) - Number(bargaint.three) -(
+            Number($('#c-four').html()) >= 0 ? 0 : (Number(bargaint.four) +
+                    Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
+                            Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
+                                    Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
+                                            Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
+                                                    Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                                                            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                                                                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                                                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+            )
+    ));
+
+    $('#atp-four').html(Number($('#c-four').html()) + Number(temp.four) - Number(bargaint.four) -(
+            Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
+                    Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
+                            Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
+                                    Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
+                                            Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                                                    Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                                                            Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                                                    Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                                                            )
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+            )
+    ));
+
+    $('#atp-five').html(Number($('#c-five').html()) + Number(temp.five) - Number(bargaint.five) -(
+            Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
+                    Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
+                            Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
+                                    Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                                            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                                                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+            )
+    ));
+
+    $('#atp-six').html(Number($('#c-six').html()) + Number(temp.six) - Number(bargaint.six) -(
+            Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
+                    Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
+                            Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                                    Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                                            Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                                    Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                                            )
+                                    )
+                            )
+                    )
+            )
+    ));
+
+    $('#atp-seven').html(Number($('#c-seven').html()) + Number(temp.seven) - Number(bargaint.seven) -(
+            Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
+                    Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                                    )
+                            )
+                    )
+            )
+    ));
+
+    $('#atp-eight').html(Number($('#c-eight').html()) + Number(temp.eight) - Number(bargaint.eight) -(
+            Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
+                    Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                            Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                                    Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                            )
+                    )
+            )
+    ));
+
+    $('#atp-nine').html(Number($('#c-nine').html()) + Number(temp.nine) - Number(bargaint.nine) -(
+            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
+                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                    )
+            )
+    ));
+
+    $('#atp-ten').html(Number($('#c-ten').html()) + Number(temp.ten) - Number(bargaint.ten) -(
+                Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
+                        Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+                )
+    ));
+
+    $('#atp-eleven').html(Number($('#c-eleven').html()) + Number(temp.eleven) - Number(bargaint.eleven) -(
+                Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
+));
+    var res = "[ 计算ATP ] -- ATP = 计划生产量 + 计划接收量 - 从本次起到下一次产出的所有合同需求量";
+    return res;
+}
+
+var getTR = function() {
+    var temp = JSON.parse($('#material').find("option:selected").attr("data"));
+    temp.one = $('#t-one').html();
+    temp.two = $('#t-two').html();
+    temp.three = $('#t-three').html();
+    temp.four = $('#t-four').html();
+    temp.five = $('#t-five').html();
+    temp.six = $('#t-six').html();
+    temp.seven = $('#t-seven').html();
+    temp.eight = $('#t-eight').html();
+    temp.nine = $('#t-nine').html();
+    temp.ten = $('#t-ten').html();
+    temp.eleven = $('#t-eleven').html();
+    temp.twelve = $('#t-twelve').html();
+    return temp;
+}
+
+var getCC = function() {
+    var temp = JSON.parse($('#material').find("option:selected").attr("data"));
+    temp.one = $('#c-one').html();
+    temp.two = $('#c-two').html();
+    temp.three = $('#c-three').html();
+    temp.four = $('#c-four').html();
+    temp.five = $('#c-five').html();
+    temp.six = $('#c-six').html();
+    temp.seven = $('#c-seven').html();
+    temp.eight = $('#c-eight').html();
+    temp.nine = $('#c-nine').html();
+    temp.ten = $('#c-ten').html();
+    temp.eleven = $('#c-eleven').html();
+    temp.twelve = $('#c-twelve').html();
+    return temp;
+}
+
+var getJXQ = function() {
+    var temp = JSON.parse($('#material').find("option:selected").attr("data"));
+    temp.one = $('#x-one').html();
+    temp.two = $('#x-two').html();
+    temp.three = $('#x-three').html();
+    temp.four = $('#x-four').html();
+    temp.five = $('#x-five').html();
+    temp.six = $('#x-six').html();
+    temp.seven = $('#x-seven').html();
+    temp.eight = $('#x-eight').html();
+    temp.nine = $('#x-nine').html();
+    temp.ten = $('#x-ten').html();
+    temp.eleven = $('#x-eleven').html();
+    temp.twelve = $('#x-twelve').html();
+    return temp;
+}
+
+var getInitPAB = function() {
+    var temp = JSON.parse($('#material').find("option:selected").attr("data"));
+    temp.one = $('#pab-one').html();
+    temp.two = $('#pab-two').html();
+    temp.three = $('#pab-three').html();
+    temp.four = $('#pab-four').html();
+    temp.five = $('#pab-five').html();
+    temp.six = $('#pab-six').html();
+    temp.seven = $('#pab-seven').html();
+    temp.eight = $('#pab-eight').html();
+    temp.nine = $('#pab-nine').html();
+    temp.ten = $('#pab-ten').html();
+    temp.eleven = $('#pab-eleven').html();
+    temp.twelve = $('#pab-twelve').html();
+    return temp;
+}
+var getPAB = function() {
+    var temp = JSON.parse($('#material').find("option:selected").attr("data"));
+    temp.one = $('#pab1-one').html();
+    temp.two = $('#pab1-two').html();
+    temp.three = $('#pab1-three').html();
+    temp.four = $('#pab1-four').html();
+    temp.five = $('#pab1-five').html();
+    temp.six = $('#pab1-six').html();
+    temp.seven = $('#pab1-seven').html();
+    temp.eight = $('#pab1-eight').html();
+    temp.nine = $('#pab1-nine').html();
+    temp.ten = $('#pab1-ten').html();
+    temp.eleven = $('#pab1-eleven').html();
+    temp.twelve = $('#pab1-twelve').html();
+    return temp;
+}
 
 //-----------
 // Functions
@@ -236,165 +498,6 @@ var setPABCX = function() {
     return res;
 }
 
-var setATP = function() {
-    var temp = getJieshou();
-    var bargaint = JSON.parse($('#material').find("option:selected").attr("data"));
-    $('#atp-one').html(Number($('#pab-zero').html()) + Number($('#c-one').html()) + Number(temp.one) - Number(bargaint.one) -(
-        Number($('#c-two').html()) >= 0 ? 0 : (Number(bargaint.two) +
-                Number($('#c-three').html()) >= 0 ? 0 : (Number(bargaint.three) +
-                        Number($('#c-four').html()) >= 0 ? 0 : (Number(bargaint.four) +
-                                Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
-                                        Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
-                                                Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
-                                                        Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
-                                                                Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                                                                        Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                                                                                Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                                                                        Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                                                                                )
-                                                                        )
-                                                                )
-                                                        )
-                                                )
-                                        )
-                                )
-                        )
-                )
-            )
-        ));
-
-    $('#atp-two').html(Number($('#c-two').html()) + Number(temp.two) - Number(bargaint.two) -(
-        Number($('#c-three').html()) >= 0 ? 0 : (Number(bargaint.three) +
-                Number($('#c-four').html()) >= 0 ? 0 : (Number(bargaint.four) +
-                        Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
-                                Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
-                                        Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
-                                                Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
-                                                        Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                                                                Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                                                                        Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                                                                Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                                                                        )
-                                                                )
-                                                        )
-                                                )
-                                        )
-                                )
-                        )
-                )
-        )
-    ));
-
-    $('#atp-three').html(Number($('#c-three').html()) + Number(temp.three) - Number(bargaint.three) -(
-            Number($('#c-four').html()) >= 0 ? 0 : (Number(bargaint.four) +
-                    Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
-                            Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
-                                    Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
-                                            Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
-                                                    Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                                                            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                                                                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                                                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                                                                    )
-                                                            )
-                                                    )
-                                            )
-                                    )
-                            )
-                    )
-            )
-    ));
-
-    $('#atp-four').html(Number($('#c-four').html()) + Number(temp.four) - Number(bargaint.four) -(
-            Number($('#c-five').html()) >= 0 ? 0 : (Number(bargaint.five) +
-                    Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
-                            Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
-                                    Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
-                                            Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                                                    Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                                                            Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                                                    Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                                                            )
-                                                    )
-                                            )
-                                    )
-                            )
-                    )
-            )
-    ));
-
-    $('#atp-five').html(Number($('#c-five').html()) + Number(temp.five) - Number(bargaint.five) -(
-            Number($('#c-six').html()) >= 0 ? 0 : (Number(bargaint.six) +
-                    Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
-                            Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
-                                    Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                                            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                                                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                                                    )
-                                            )
-                                    )
-                            )
-                    )
-            )
-    ));
-
-    $('#atp-six').html(Number($('#c-six').html()) + Number(temp.six) - Number(bargaint.six) -(
-            Number($('#c-seven').html()) >= 0 ? 0 : (Number(bargaint.seven) +
-                    Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
-                            Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                                    Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                                            Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                                    Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                                            )
-                                    )
-                            )
-                    )
-            )
-    ));
-
-    $('#atp-seven').html(Number($('#c-seven').html()) + Number(temp.seven) - Number(bargaint.seven) -(
-            Number($('#c-eight').html()) >= 0 ? 0 : (Number(bargaint.eight) +
-                    Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                                    )
-                            )
-                    )
-            )
-    ));
-
-    $('#atp-eight').html(Number($('#c-eight').html()) + Number(temp.eight) - Number(bargaint.eight) -(
-            Number($('#c-nine').html()) >= 0 ? 0 : (Number(bargaint.nine) +
-                    Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                            Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                                    Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                            )
-                    )
-            )
-    ));
-
-    $('#atp-nine').html(Number($('#c-nine').html()) + Number(temp.nine) - Number(bargaint.nine) -(
-            Number($('#c-ten').html()) >= 0 ? 0 : (Number(bargaint.ten) +
-                    Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                            Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                    )
-            )
-    ));
-
-    $('#atp-ten').html(Number($('#c-ten').html()) + Number(temp.ten) - Number(bargaint.ten) -(
-                Number($('#c-eleven').html()) >= 0 ? 0 : (Number(bargaint.eleven) +
-                        Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-                )
-    ));
-
-    $('#atp-eleven').html(Number($('#c-eleven').html()) + Number(temp.eleven) - Number(bargaint.eleven) -(
-                Number($('#c-twelve').html()) >= 0 ? 0 : (Number(bargaint.twelve))
-));
-    var res = "[ 计算ATP ] -- ATP = 计划生产量 + 计划接收量 - 从本次起到下一次产出的所有合同需求量";
-    return res;
-}
 
 var getChanchu = function() {
     var temp = JSON.parse($('#material').find("option:selected").attr("data"));

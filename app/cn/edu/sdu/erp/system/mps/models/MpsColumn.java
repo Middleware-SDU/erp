@@ -1,7 +1,9 @@
 package cn.edu.sdu.erp.system.mps.models;
 
 import javax.persistence.Entity;
+
 import cn.edu.sdu.erp.system.commons.models.BaseModel;
+import cn.edu.sdu.erp.system.commons.models.Material;
 
 /**
  * 描述MPS表的所有列（MPS基本信息表）

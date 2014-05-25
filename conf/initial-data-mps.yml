@@ -1,66 +1,106 @@
 # Consumer
 consumers:
 
-    - &user_A !!cn.edu.sdu.erp.system.mps.models.Consumer
+    - &user_A !!cn.edu.sdu.erp.system.commons.models.Consumer
         name:      Yonggang Yuan
 
-    - &user_B !!cn.edu.sdu.erp.system.mps.models.Consumer
+    - &user_B !!cn.edu.sdu.erp.system.commons.models.Consumer
         name:      sdcsyyg
 
 # MaterialCategories
 
 materialCategories:
 
-    - &category_A !!cn.edu.sdu.erp.system.mps.models.MaterialCategory
+    - &category_A !!cn.edu.sdu.erp.system.commons.models.MaterialCategory
         name:       木料类
 
-    - &category_B !!cn.edu.sdu.erp.system.mps.models.MaterialCategory
+    - &category_B !!cn.edu.sdu.erp.system.commons.models.MaterialCategory
         name:       钢材类
 
 # Materials
 
 materials:
 
-    - &material_1 !!cn.edu.sdu.erp.system.mps.models.Material
+    - &material_1 !!cn.edu.sdu.erp.system.commons.models.Material
         category:       *category_A
         code:           001
         name:           001 木质门窗
 
-    - &material_2 !!cn.edu.sdu.erp.system.mps.models.Material
+    - &material_2 !!cn.edu.sdu.erp.system.commons.models.Material
         category:       *category_A
         code:           002
         name:           002 圆木(尺寸：## X ##)
 
-    - &material_3 !!cn.edu.sdu.erp.system.mps.models.Material
+    - &material_3 !!cn.edu.sdu.erp.system.commons.models.Material
         category:       *category_B
         code:           011
         name:           011 钢板（尺寸：## X ##)
 
-    - &material_4 !!cn.edu.sdu.erp.system.mps.models.Material
+    - &material_4 !!cn.edu.sdu.erp.system.commons.models.Material
         category:       *category_B
         code:           012
-        name:           012 钢筋（规格：12m）
+        name:           012 钢筋（规格：12m)
+
+    - &material_5 !!cn.edu.sdu.erp.system.commons.models.Material
+        category:       *category_B
+        code:           003
+        name:           003 锅炉
+
+# BOMs
+
+boms:
+
+    - &bom_1 !!cn.edu.sdu.erp.system.mrp.models.BOM
+        level:           0
+        name:            木质门窗
+        material:        *material_1
+
+    - &bom_1_1 !!cn.edu.sdu.erp.system.mrp.models.BOM
+        parent:          *bom_1
+        material:        *material_2
+        level:           1
+        sum:             10
+        unit:            (批)
+
+    - &bom_2 !!cn.edu.sdu.erp.system.mrp.models.BOM
+        level:           0
+        name:            锅炉
+        material:        *material_5
+
+    - &bom_2_1 !!cn.edu.sdu.erp.system.mrp.models.BOM
+        parent:          *bom_2
+        material:        *material_3
+        level:           1
+        sum:             10
+        unit:            (片)
+
+    - &bom_2_2 !!cn.edu.sdu.erp.system.mrp.models.BOM
+        parent:          *bom_2
+        material:        *material_4
+        level:           1
+        sum:             12
+        unit:            (根)
 
 # _Orders
 
 _orders:
 
-    - &order_1 !!cn.edu.sdu.erp.system.mps.models._Order
+    - &order_1 !!cn.edu.sdu.erp.system.commons.models._Order
         material:       *material_1
         consumer:       *user_A
         bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":90,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":90}"
 
-    - &order_2 !!cn.edu.sdu.erp.system.mps.models._Order
+    - &order_2 !!cn.edu.sdu.erp.system.commons.models._Order
         material:       *material_2
         consumer:       *user_B
         bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":90,\"seven\":76,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":90,\"two\":90}"
 
-    - &order_3 !!cn.edu.sdu.erp.system.mps.models._Order
+    - &order_3 !!cn.edu.sdu.erp.system.commons.models._Order
         material:       *material_3
         consumer:       *user_A
         bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":78,\"seven\":56,\"six\":80,\"ten\":34,\"three\":80,\"twelve\":80,\"two\":90}"
 
-    - &order_4 !!cn.edu.sdu.erp.system.mps.models._Order
+    - &order_4 !!cn.edu.sdu.erp.system.commons.models._Order
         material:       *material_4
         consumer:       *user_B
         bargaint:       "{\"eight\":80,\"eleven\":80,\"five\":80,\"four\":80,\"nine\":80,\"one\":90,\"seven\":80,\"six\":80,\"ten\":80,\"three\":80,\"twelve\":80,\"two\":90}"

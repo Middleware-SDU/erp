@@ -3,9 +3,10 @@ package cn.edu.sdu.erp.system.mps.daos.impls;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+
 import cn.edu.sdu.erp.system.commons.daos.AbstractBaseModelDAO;
+import cn.edu.sdu.erp.system.commons.models.Consumer;
 import cn.edu.sdu.erp.system.mps.daos.ConsumerDAO;
-import cn.edu.sdu.erp.system.mps.models.Consumer;
 
 
 @Repository

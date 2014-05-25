@@ -1,8 +1,7 @@
-package cn.edu.sdu.erp.system.mps.models;
+package cn.edu.sdu.erp.system.commons.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import cn.edu.sdu.erp.system.commons.models.BaseModel;
 import cn.edu.sdu.erp.system.mps.daos.MaterialDAO;
 import cn.edu.sdu.erp.system.mps.daos.impls.MaterialDAOImpl;
 

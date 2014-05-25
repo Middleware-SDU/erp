@@ -1,6 +1,6 @@
-package cn.edu.sdu.erp.system.mps.models;
+package cn.edu.sdu.erp.system.commons.models;
 import javax.persistence.Entity;
-import cn.edu.sdu.erp.system.commons.models.BaseModel;
+
 import cn.edu.sdu.erp.system.mps.daos.ConsumerDAO;
 import cn.edu.sdu.erp.system.mps.daos.impls.ConsumerDAOImpl;
 

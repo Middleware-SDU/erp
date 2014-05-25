@@ -26,7 +26,7 @@ public class Global extends GlobalSettings {
             @SuppressWarnings("unchecked")
             public void invoke() {
 
-                long count = cn.edu.sdu.erp.system.mps.models.Consumer.dao.findAll().size();
+                long count = cn.edu.sdu.erp.system.commons.models.Consumer.dao.findAll().size();
 
                 if(count == 0){
                     Map<String, List<Object>> all = (Map<String, List<Object>>) Yaml.load("initial-data-mps.yml");

@@ -1,11 +1,10 @@
-package cn.edu.sdu.erp.system.mps.models;
+package cn.edu.sdu.erp.system.commons.models;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import cn.edu.sdu.erp.system.commons.models.BaseModel;
 import cn.edu.sdu.erp.system.mps.daos._OrderDAO;
 import cn.edu.sdu.erp.system.mps.daos.impls._OrderDAOImpl;
 

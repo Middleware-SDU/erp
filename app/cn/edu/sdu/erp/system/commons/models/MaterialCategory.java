@@ -1,6 +1,5 @@
-package cn.edu.sdu.erp.system.mps.models;
+package cn.edu.sdu.erp.system.commons.models;
 import javax.persistence.Entity;
-import cn.edu.sdu.erp.system.commons.models.BaseModel;
 
 /**
  * 
